@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <title>Blog</title>
+        <!--bootstrap-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+        <!--Medium Style Editor-->
+        <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+
+        <!--Custom CSS-->
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
+        <!--Fonts-->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Russo+One&display=swap" rel="stylesheet">
+
+    </head>
+    <body class = "loader">
+
+    <!--NAVBAR-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand bigbrand" href = "{% url 'post_list' %}">My blog</a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <u1 class = "nav navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class = "nav-item">
+                            <a class="nav-link active" aria-current="page" href = "{% url 'about' %}" >About</a>
+                        </li>
+                        <li class = "nav-item">
+                            <a class="nav-link active" aria-current="page" href = "https://www.github.com">Github</a>
+                        </li>
+                        <li class = "nav-item">
+                            <a class="nav-link active" aria-current="page" href = "https://www.linkedin.com">LinkedIn</a>
+                        </li>
+                    </u1>
+
+                    <u1 class = 'nav navbar-nav'>
+                        {% if user.is_authenticated %}
+                        <li class = "nav-item">
+                            <a class="nav-link active" aria-current="page" href = "{% url 'post_new' %}">New Post</a>
+                        </li>
+                        <li class = "nav-item">
+                            <a class="nav-link active" aria-current="page" href = "{% url 'post_draft_list' %}">Drafts</a>
+                        </li>
+                        <li class = "nav-item">
+                            <a class="nav-link active" aria-current="page" href = "{% url 'logout' %}">Log Out</a>
+                        </li>
+                        
+                        <span class="navbar-text">Welcome: {{ user.username }}</span>
+                        
+                        {% else %}
+                        <li><a href = "{% url 'login' %}">Login</a></li>
+                        {% endif %}
+                    </u1>   
+                </div> 
+            </div>
+        </nav>
+
+
+    <!--CONTENTBLOCK-->
+    <div class = "content container">
+        {% block  content%}
+        {% endblock  %} 
+    </div>
+        <script src="" async defer></script>
+    </body>
+</html>
