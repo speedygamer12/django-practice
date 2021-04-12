@@ -26,7 +26,7 @@ SECRET_KEY = 'll7=9k#@_zk%c75a07f=x7s&(nsqkb3u1i+xx#(0u(%-q*m)p3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['http://speedygamer12.pythonanywhere.com/',]
 
 
 # Application definition
